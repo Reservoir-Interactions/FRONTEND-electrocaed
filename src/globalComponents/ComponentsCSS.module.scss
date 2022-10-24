@@ -1,0 +1,66 @@
+.electrocaedLogo {
+  font-weight: 650;
+  color: #FF7575;
+  .electrocaedLogoSpan {
+    color: #C8BFFB;
+  }
+}
+.LogoInput {
+  background: #ffffff;
+  color: #8c918b;
+  display: flex;
+  gap: .5rem;
+  padding: .4rem;
+  height: 2rem;
+  border-radius: .2rem;
+  border:.15rem #C4C4C4 solid;
+  align-content: center;
+  justify-content: space-between;
+  input {
+    border: none;
+    outline: none;
+    font-size: inherit;
+    color: inherit;
+  }
+  &:active{
+    border-color: #2675BF;
+  }
+}
+
+.BlueButton {
+  text-decoration: none;
+  border: solid .17rem;
+  padding: .2rem 1rem;
+  border-radius: .3rem;
+  cursor: pointer;
+  width: max-content;
+  &:active {
+    filter: grayscale(50%);
+  }
+}
+
+
+.Gombuz {
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  position: relative;
+  cursor: default;
+  .HoverGombuz{
+    visibility: hidden;
+    position: absolute;
+    top: 0%;
+    background: #ffffff;
+    width: max-content;
+    padding: .4rem;
+    font-weight: 500;
+    font-size: .8rem;
+    max-width: 150px;
+  }
+  &:hover .HoverGombuz {
+    visibility: visible;
+  }
+}

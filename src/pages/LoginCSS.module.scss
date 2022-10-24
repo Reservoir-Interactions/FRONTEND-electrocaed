@@ -1,0 +1,19 @@
+.Login {
+  background: url("../resources/svgs/login_background.svg") no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+
+
+.LoginTab{
+  background: #3C3F41;
+  height: 14rem;
+  width: max-content;
+  border-radius: 1rem 0 1rem 0;
+  border: 1px #CA8686 solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 .8rem 0 .8rem;
+}
