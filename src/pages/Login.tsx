@@ -7,7 +7,10 @@ import {
   LogoInput,
 } from "../globalComponents/Components";
 import { faUser, faEye } from "@fortawesome/free-solid-svg-icons";
-
+import { default_url } from "../Globals";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/LoginReducer";
+import LoginReducer from "../redux/LoginReducer";
 export function Login() {
   return (
     <div className={style.Login}>
@@ -17,6 +20,25 @@ export function Login() {
 }
 
 export function LoginTab() {
+  const dispatch = useDispatch();
+  async function formSubmit(e: React.FormEvent<HTMLFormElement>) {
+    let response = await fetch(default_url + "login", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: e.currentTarget.loginmail.value,
+        password: e.currentTarget.loginpassword.value,
+      }),
+    });
+    if (response.ok) {
+      let userData: { message: string; token: string } = await response.json();
+      dispatch(login(userData.token));
+    }
+  }
+
   return (
     <div
       style={{
@@ -31,7 +53,7 @@ export function LoginTab() {
         className={style.LoginTab}
         onSubmit={(e) => {
           e.preventDefault();
-          console.log("here is a test");
+          formSubmit(e);
         }}
       >
         <ElectroCAEDLogo fontSize={1.4} />
@@ -47,6 +69,7 @@ export function LoginTab() {
             icon={faUser}
             placeholder={"Enter the email address"}
             fontColor={"#a2a2a2"}
+            name={"loginmail"}
           />
           <Gombuz width={2} helptext={"Enter the registered email."} />
         </div>
@@ -63,6 +86,7 @@ export function LoginTab() {
             placeholder={"Enter the password"}
             fontColor={"#a2a2a2"}
             type={"password"}
+            name={"loginpassword"}
           />
           <Gombuz width={2} helptext={"Enter the registered password."} />
         </div>

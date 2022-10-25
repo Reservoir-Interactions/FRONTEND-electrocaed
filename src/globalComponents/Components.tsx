@@ -26,6 +26,8 @@ interface LogoInputInterface {
   placeholder: string;
   fontColor?: string;
   type?: string;
+  autocomplete?: string;
+  name: string;
 }
 export function LogoInput({
   fontSize,
@@ -34,6 +36,8 @@ export function LogoInput({
   fontColor,
   placeholder,
   type,
+  name,
+  autocomplete,
 }: LogoInputInterface) {
   return (
     <div
@@ -48,10 +52,13 @@ export function LogoInput({
       <input
         type={type}
         placeholder={placeholder}
+        name={name}
         style={{
           padding: 0,
           margin: 0,
         }}
+        required={true}
+        autoComplete={autocomplete}
       />
     </div>
   );
@@ -60,6 +67,7 @@ export function LogoInput({
 LogoInput.defaultProps = {
   fontColor: "#000000",
   type: "text",
+  autocomplete: "on",
 };
 
 interface BlueButtonInterface {
